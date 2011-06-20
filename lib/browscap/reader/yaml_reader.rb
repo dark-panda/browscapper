@@ -1,5 +1,4 @@
 
-require 'reader'
 require 'yaml'
 
 module Browscap

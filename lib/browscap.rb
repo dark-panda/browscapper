@@ -1,9 +1,10 @@
 
 module Browscap
-	autoload :UserAgent,  'user_agent'
-	autoload :CSVReader,  'reader/csv_reader'
-	autoload :YAMLReader, 'reader/yaml_reader'
-	autoload :INIReader,  'reader/ini_reader'
+	autoload :UserAgent,  'browscap/user_agent'
+	autoload :Reader,     'browscap/reader'
+	autoload :CSVReader,  'browscap/reader/csv_reader'
+	autoload :YAMLReader, 'browscap/reader/yaml_reader'
+	autoload :INIReader,  'browscap/reader/ini_reader'
 
 	class << self
 		attr_reader :entries, :file

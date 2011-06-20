@@ -1,5 +1,4 @@
 
-require 'reader'
 begin
     require 'fastercsv'
 rescue
