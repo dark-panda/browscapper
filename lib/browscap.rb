@@ -35,8 +35,9 @@ module Browscap
 
       ua_str = ua.downcase
       ua_len = ua.length
-      MATCH_CACHE[ua] ||= @entries.select { |(k, v)|
-        v[:pattern] =~ ua_str
+
+      MATCH_CACHE[ua] ||= @entries.select { |k, v|
+        v[:pattern] =~ ua_str if v
       }.sort_by { |(k, v)|
         ua_len - v[:user_agent].gsub(/[?*]/, '').length
       }.collect { |(k, v)|
