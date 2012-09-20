@@ -1,3 +1,4 @@
+# encoding: BINARY
 
 module Browscap
   class UserAgent

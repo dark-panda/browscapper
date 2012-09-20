@@ -1,3 +1,4 @@
+# encoding: BINARY
 
 require 'inifile'
 
@@ -7,7 +8,7 @@ module Browscap
       include Reader
 
       def load(file)
-        ini = IniFile.load(file)
+        ini = IniFile.load(file, :encoding => 'BINARY')
         ini.delete_section('GJK_Browscap_Version')
 
         injector = proc { |memo, section|
@@ -38,6 +39,7 @@ module Browscap
 
           memo
         }
+
         ini.sections.inject({}, &injector)
       end
     end

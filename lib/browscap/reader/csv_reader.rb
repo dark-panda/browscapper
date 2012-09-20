@@ -1,8 +1,9 @@
+# encoding: BINARY
 
-begin
-    require 'fastercsv'
-rescue
-    require 'csv'
+if RUBY_VERSION.to_f < 1.9
+  require 'fastercsv'
+else
+  require 'csv'
 end
 
 module Browscap

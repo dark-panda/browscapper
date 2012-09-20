@@ -1,3 +1,4 @@
+# encoding: BINARY
 
 module Browscap
   autoload :UserAgent,  'browscap/user_agent'

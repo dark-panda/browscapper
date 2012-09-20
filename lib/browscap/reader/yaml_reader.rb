@@ -1,3 +1,4 @@
+# encoding: BINARY
 
 require 'yaml'
 
