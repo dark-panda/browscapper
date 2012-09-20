@@ -3,10 +3,10 @@
 $: << './lib'
 
 require 'rubygems'
-require 'test/unit'
+require 'minitest/autorun'
 require './lib/browscap'
 
-class BrowscapTest < Test::Unit::TestCase
+class BrowscapTest < MiniTest::Unit::TestCase
   FIREFOX_ON_OSX = Browscap::UserAgent.new({
     :cdf => false,
     :javascript => true,
