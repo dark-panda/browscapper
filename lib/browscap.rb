@@ -6,6 +6,7 @@ module Browscap
   autoload :CSVReader,  'browscap/reader/csv_reader'
   autoload :YAMLReader, 'browscap/reader/yaml_reader'
   autoload :INIReader,  'browscap/reader/ini_reader'
+  autoload :MarshalReader,  'browscap/reader/marshal_reader'
 
   class << self
     attr_reader :entries, :file
@@ -19,11 +20,19 @@ module Browscap
           YAMLReader
         when /\.ini$/
           INIReader
+        else
+          MarshalReader
       end
 
       @file = file
       @entries = reader.load(file)
       self
+    end
+
+    def dump(format = :marshal)
+      @entries or Browscap.load
+
+      Marshal.dump(@entries)
     end
 
     def clear_cache
