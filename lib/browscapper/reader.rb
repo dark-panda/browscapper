@@ -1,6 +1,6 @@
 # encoding: BINARY
 
-module Browscap
+module Browscapper
   module Reader
     def pattern_to_regexp(pattern)
       pattern = pattern.dup

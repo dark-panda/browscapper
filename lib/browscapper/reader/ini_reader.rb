@@ -2,7 +2,7 @@
 
 require 'inifile'
 
-module Browscap
+module Browscapper
   module INIReader
     class << self
       include Reader

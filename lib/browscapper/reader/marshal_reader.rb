@@ -1,6 +1,6 @@
 # encoding: BINARY
 
-module Browscap
+module Browscapper
   module MarshalReader
     class << self
       include Reader

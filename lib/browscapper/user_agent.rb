@@ -1,6 +1,6 @@
 # encoding: BINARY
 
-module Browscap
+module Browscapper
   class UserAgent
     include Enumerable
 

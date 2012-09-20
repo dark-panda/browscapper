@@ -2,7 +2,7 @@
 
 require 'yaml'
 
-module Browscap
+module Browscapper
   module YAMLReader
     class << self
       def load(file)

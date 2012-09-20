@@ -1,12 +1,12 @@
 # encoding: BINARY
 
-module Browscap
-  autoload :UserAgent,  'browscap/user_agent'
-  autoload :Reader,     'browscap/reader'
-  autoload :CSVReader,  'browscap/reader/csv_reader'
-  autoload :YAMLReader, 'browscap/reader/yaml_reader'
-  autoload :INIReader,  'browscap/reader/ini_reader'
-  autoload :MarshalReader,  'browscap/reader/marshal_reader'
+module Browscapper
+  autoload :UserAgent,  'browscapper/user_agent'
+  autoload :Reader,     'browscapper/reader'
+  autoload :CSVReader,  'browscapper/reader/csv_reader'
+  autoload :YAMLReader, 'browscapper/reader/yaml_reader'
+  autoload :INIReader,  'browscapper/reader/ini_reader'
+  autoload :MarshalReader,  'browscapper/reader/marshal_reader'
 
   class << self
     attr_reader :entries, :file
@@ -30,7 +30,7 @@ module Browscap
     end
 
     def dump(format = :marshal)
-      @entries or Browscap.load
+      @entries or Browscapper.load
 
       Marshal.dump(@entries)
     end

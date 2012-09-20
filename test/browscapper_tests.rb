@@ -4,10 +4,10 @@ $: << './lib'
 
 require 'rubygems'
 require 'minitest/autorun'
-require './lib/browscap'
+require './lib/browscapper'
 
-class BrowscapTest < MiniTest::Unit::TestCase
-  FIREFOX_ON_OSX = Browscap::UserAgent.new({
+class BrowscapperTest < MiniTest::Unit::TestCase
+  FIREFOX_ON_OSX = Browscapper::UserAgent.new({
     :activex_controls => false,
     :alpha => false,
     :aol_version => 0,
@@ -47,8 +47,8 @@ class BrowscapTest < MiniTest::Unit::TestCase
   FIREFOX_ON_OSX.pattern = /^mozilla\/5\.0 \(macintosh; .*; .*mac os x.*; .*; rv:1\.9\.2.*\) gecko\/.* firefox\/3\.6.*$/
 
   def test_browscap_ini
-    Browscap.load(File.join('vendor', 'browscap.dump'))
-    match = Browscap.match('Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.8) Gecko/20100722 Firefox/3.6.8')
+    Browscapper.load(File.join('vendor', 'browscap.dump'))
+    match = Browscapper.match('Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.8) Gecko/20100722 Firefox/3.6.8')
 
     FIREFOX_ON_OSX.each do |k, v|
       assert(v == match[k], " Expected #{v.inspect} for #{k}, got #{match[k].inspect}")

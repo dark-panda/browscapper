@@ -6,7 +6,7 @@ else
   require 'csv'
 end
 
-module Browscap
+module Browscapper
   module CSVReader
     CSV_ENGINE = if defined?(FasterCSV)
       FasterCSV
