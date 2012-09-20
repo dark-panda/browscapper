@@ -18,7 +18,7 @@ module Browscap
       include Reader
 
       def load(file)
-        csv = CSV_ENGINE.open(file, 'r')
+        csv = CSV_ENGINE.open(file, 'rb')
 
         # skip header
         2.times { csv.shift }
@@ -40,12 +40,19 @@ module Browscap
                 l[i]
             end
           end
-          entry.user_agent.sub!(/^\[(.+)\]$/, '\1')
-          entry.pattern = pattern_to_regexp(entry.user_agent)
+
+          entry.user_agent = if entry.user_agent
+            entry.user_agent.sub!(/^\[(.+)\]$/, '\1')
+          elsif entry.browser
+            entry.browser
+          end
+
+          entry.pattern = pattern_to_regexp(entry.user_agent.to_s)
 
           if entries[entry.parent]
             entry.merge!(entries[entry.parent])
           end
+
           entries[entry.user_agent] = entry
         end
 
