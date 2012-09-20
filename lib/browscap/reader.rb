@@ -3,22 +3,18 @@
 module Browscap
   module Reader
     def pattern_to_regexp(pattern)
+      pattern = pattern.dup
+
       if pattern.respond_to?(:force_encoding)
-        pattern = pattern.dup
         pattern.force_encoding('BINARY')
       end
 
-      Regexp.new(
-        '^' +
-        pattern.downcase.
-          gsub(%r{\\}, '\\').
-          gsub(/\./, '\.').
-          gsub(/\?/, '.').
-          gsub(/\*/, '.*').
-          gsub(/\(/, '\(').
-          gsub(/\)/, '\)') +
-        '$'
-      )
+      pattern.downcase!
+      pattern.gsub!(/([\^\$\(\)\[\]\.\-])/, "\\\\\\1")
+      pattern.gsub!('?', '.')
+      pattern.gsub!('*', '.*?')
+
+      Regexp.new("^#{pattern}$")
     end
   end
 end
