@@ -62,5 +62,6 @@ module Browscap
         m.first if !m.empty?
       end
     end
+    alias :query :match
   end
 end
