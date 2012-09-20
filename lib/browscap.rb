@@ -55,8 +55,12 @@ module Browscap
     end
 
     def match(ua)
-      m = self.matches(ua)
-      m.first if !m.empty?
+      if MATCH_CACHE[ua] && !MATCH_CACHE[ua].empty?
+        MATCH_CACHE[ua].first
+      else
+        m = self.matches(ua)
+        m.first if !m.empty?
+      end
     end
   end
 end
