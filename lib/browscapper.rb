@@ -13,6 +13,10 @@ module Browscapper
     MATCH_CACHE = Hash.new
 
     def load(file = File.join(%w{ . browscap.ini }))
+      if !File.exists?(file)
+        raise ArgumentError.new("File #{file} not found.")
+      end
+
       reader = case file.downcase
         when /\.csv$/
           CSVReader

@@ -1,0 +1,43 @@
+
+= Browscapper
+
+I suppose this could also be called Yet Another Browscap.ini Reader.
+
+  Browscapper.load('path/to/browscap.ini')
+  Browscapper.match('Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.8) Gecko/20100722 Firefox/3.6.8')
+  #=> Browscapper::UserAgent
+
+  Browscapper.matches
+  #=> Array of Browscapper::UserAgents, in order of best-to-worst matches.
+
+== File Formats
+
+The most widely used browscap.ini file is probably Gary Keith's, found at
+https://browsers.garykeith.com/downloads . For the sake of convenience and
+compatibiilty, Browscapper.load will look in the current directory for
+a browscap.ini file. However, Browscapper can also read in browscap.csv
+files as well, which are also available from Gary's site, as well as YAML
+files and files written in Ruby's own Marshal'd file format. In fact, for the
+sake of performance and speed, you may want to consider dumping browscap.ini
+files into the Marshal'd format, which loads much faster than any of the
+other file formats. For the sake of comparison, here are some benchmarks from
+on my current development laptop (MacBook Pro 10,1 with a solid state drive):
+
+  bench_csv  1.111839s
+  bench_ini  3.801561s
+  bench_marshal  0.081942s
+
+These are just the averages from a few runs, but the result is pretty clear
+all the same: the Marshal'd format is by far quicker. (The YAML parser
+currently has some problems with some messed up encodings and isn't
+really recommended for prime time.)
+
+To dump Browscapper into a Marshal'd format, you can either call
+Browscapper.dump and write the results to a file or you can use the provided
+rake task thusly:
+
+  rake browscapper:dump IN=browscap.ini OUT=browscap.dump
+
+== License
+
+See the MIT-LICENSE file for details.
