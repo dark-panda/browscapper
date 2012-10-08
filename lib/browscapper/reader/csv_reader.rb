@@ -47,7 +47,7 @@ module Browscapper
             entry.browser
           end
 
-          entry.pattern = pattern_to_regexp(entry.user_agent.to_s)
+          entry.pattern = pattern_to_regexp(entry.property_name.to_s)
 
           if entries[entry.parent]
             entry.merge!(entries[entry.parent])

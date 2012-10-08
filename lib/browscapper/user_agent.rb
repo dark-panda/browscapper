@@ -23,6 +23,7 @@ module Browscapper
     attr_accessor :pattern
 
     MAP = {
+      'propertyname'         => :property_name,
       'useragent'            => :user_agent,
       'version'              => :version,
       'majorver'             => :major_version,
