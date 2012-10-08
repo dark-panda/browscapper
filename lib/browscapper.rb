@@ -1,5 +1,7 @@
 # encoding: BINARY
 
+require 'browscapper/version'
+
 module Browscapper
   autoload :UserAgent,  'browscapper/user_agent'
   autoload :Reader,     'browscapper/reader'
