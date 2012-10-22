@@ -1,10 +1,7 @@
 # encoding: BINARY
 
-$: << './lib'
-
-require 'rubygems'
-require 'minitest/autorun'
-require './lib/browscapper'
+$: << File.dirname(__FILE__)
+require 'test_helper'
 
 class BrowscapperTest < MiniTest::Unit::TestCase
   FIREFOX_ON_OSX = Browscapper::UserAgent.new({

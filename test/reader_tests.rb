@@ -1,36 +1,42 @@
 
 # encoding: BINARY
 
-$: << './lib'
-
-require 'rubygems'
-require 'minitest/autorun'
-require 'minitest/benchmark' if ENV['BENCH']
-require './lib/browscapper'
+$: << File.dirname(__FILE__)
+require 'test_helper'
 require 'benchmark'
 
 class ReaderTests < MiniTest::Unit::TestCase
-  def bench_csv
-    assert_performance_constant do |n|
-      Browscapper.load('vendor/browscap.csv')
+  if ENV['BENCH']
+    def test_csv
+      Benchmark.bmbm do |bmbm|
+        bmbm.report('csv') do
+          Browscapper.load('vendor/browscap.csv')
+        end
+      end
     end
-  end
 
-  def bench_yaml
-    assert_performance_constant do |n|
-      Browscapper.load('vendor/browscap.yml')
+    def test_yaml
+      Benchmark.bmbm do |bmbm|
+        bmbm.report('yaml') do
+          Browscapper.load('vendor/browscap.yml')
+        end
+      end
     end
-  end
 
-  def bench_ini
-    assert_performance_constant do |n|
-      Browscapper.load('vendor/browscap.ini')
+    def test_ini
+      Benchmark.bmbm do |bmbm|
+        bmbm.report('ini') do
+          Browscapper.load('vendor/browscap.ini')
+        end
+      end
     end
-  end
 
-  def bench_marshal
-    assert_performance_constant do |n|
-      Browscapper.load('vendor/browscap.dump')
+    def test_marshal
+      Benchmark.bmbm do |bmbm|
+        bmbm.report('marshal') do
+          Browscapper.load('vendor/browscap.dump')
+        end
+      end
     end
   end
 end
