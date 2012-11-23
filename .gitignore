@@ -10,3 +10,5 @@ Thumbs.db
 pkg/
 doc/
 Gemfile.lock
+Gemfile.local
+Guardfile.local
