@@ -3,8 +3,15 @@
 
 require 'rubygems'
 require 'minitest/autorun'
-require 'minitest/reporters'
+
+if RUBY_VERSION >= '1.9'
+  require 'minitest/reporters'
+end
+
 require File.join(File.dirname(__FILE__), *%w{ .. lib browscapper })
 
-MiniTest::Reporters.use!(MiniTest::Reporters::SpecReporter.new)
+if RUBY_VERSION >= '1.9'
+  MiniTest::Reporters.use!(MiniTest::Reporters::SpecReporter.new)
+end
+
 
