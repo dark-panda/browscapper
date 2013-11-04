@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.description = "A browscap file parser and matcher."
   s.summary = s.description
   s.email = "dark.panda@gmail.com"
+  s.license = "MIT"
   s.extra_rdoc_files = [
     "README.rdoc"
   ]
