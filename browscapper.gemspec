@@ -22,9 +22,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_development_dependency("rdoc")
-  s.add_development_dependency("rake", ["~> 0.9"])
   s.add_development_dependency("minitest")
-  s.add_development_dependency("turn")
   s.add_dependency("inifile")
 end
 
