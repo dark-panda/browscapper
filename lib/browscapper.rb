@@ -32,6 +32,7 @@ module Browscapper
 
       @file = file
       @entries = reader.load(file)
+      clear_cache
       self
     end
 
