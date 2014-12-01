@@ -32,6 +32,7 @@ class BrowscapperTest < MiniTest::Unit::TestCase
     :rendering_engine_description => "For Firefox, Camino, K-Meleon, SeaMonkey, Netscape, and other Gecko-based browsers.",
     :syndication_reader => false,
     :tables => true,
+    :tablet => false,
     :user_agent => "Mozilla/5.0 (Macintosh; *; *Mac OS X*; *; rv:1.9.2*) Gecko/* Firefox/3.6*",
     :user_agent_id => nil,
     :vbscript => false,

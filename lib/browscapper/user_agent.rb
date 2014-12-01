@@ -8,7 +8,7 @@ module Browscapper
       :parent, :user_agent, :comment, :browser, :version, :major_version,
       :minor_version, :platform, :platform_version, :alpha, :beta, :win16, :win32, :win64,
       :frames, :iframes, :tables, :cookies, :background_sounds, :vbscript,
-      :javascript, :java_applets, :activex_controls, :banned, :mobile_device,
+      :javascript, :java_applets, :activex_controls, :banned, :mobile_device, :tablet,
       :syndication_reader, :crawler, :css_version, :aol_version, :user_agent_id,
       :css, :cdf, :aol, :device_name, :device_maker, :rendering_engine_name,
       :rendering_engine_version, :rendering_engine_description
