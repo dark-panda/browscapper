@@ -44,7 +44,8 @@ module Browscapper
       'supportscss'          => :css,
       'renderingengine_name' => :rendering_engine_name,
       'renderingengine_version' => :rendering_engine_version,
-      'renderingengine_description' => :rendering_engine_description
+      'renderingengine_description' => :rendering_engine_description,
+      'istablet'             => :tablet
     }
 
     def initialize(hash = {})
