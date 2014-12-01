@@ -21,8 +21,6 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/dark-panda/browscapper"
   s.require_paths = ["lib"]
 
-  s.add_development_dependency("rdoc")
-  s.add_development_dependency("minitest")
   s.add_dependency("inifile")
 end
 
