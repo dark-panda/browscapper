@@ -38,6 +38,10 @@ rake task thusly:
 
   rake browscapper:dump IN=browscap.ini OUT=browscap.dump
 
+You can also convert between formats using the `browscapper:convert` task:
+
+  rake browscapper:convert IN=browscap.dump OUT=browscap.yml
+
 == License
 
 See the MIT-LICENSE file for details.
