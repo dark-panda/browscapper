@@ -5,7 +5,7 @@ $: << File.dirname(__FILE__)
 require 'test_helper'
 require 'benchmark'
 
-class ReaderTests < MiniTest::Unit::TestCase
+class Browscapper::ReaderTests < MiniTest::Unit::TestCase
   if ENV['BENCH']
     def test_csv
       Benchmark.bmbm do |bmbm|
