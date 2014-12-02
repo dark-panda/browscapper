@@ -41,10 +41,12 @@ module Browscapper
     end
 
     def matches(ua)
+      return nil if ua_empty?(ua)
+
       @entries or self.load
 
-      ua_str = ua.downcase
-      ua_len = ua.length
+      ua_str = ua.to_s.downcase
+      ua_len = ua_str.length
 
       MATCH_CACHE[ua] ||= @entries.select { |k, v|
         v[:pattern] =~ ua_str if v
@@ -56,6 +58,8 @@ module Browscapper
     end
 
     def match(ua)
+      return nil if ua_empty?(ua)
+
       if MATCH_CACHE[ua] && !MATCH_CACHE[ua].empty?
         MATCH_CACHE[ua].first
       else
@@ -64,5 +68,13 @@ module Browscapper
       end
     end
     alias :query :match
+
+    private
+      def ua_empty?(ua)
+        return true if ua.nil?
+        return true if ua.respond_to?(:empty) && ua.empty?
+
+        false
+      end
   end
 end
