@@ -6,6 +6,15 @@ require 'test_helper'
 require 'benchmark'
 
 class Browscapper::ReaderTests < MiniTest::Unit::TestCase
+  include Browscapper::Reader
+
+  def test_pattern_to_regexp
+    assert_equal(
+      /^mozilla\/5\.0 \(foo.*?\) \+http:\/\/example\.com chrome.*?\/..$/,
+      pattern_to_regexp("Mozilla/5.0 (Foo*) +http://example.com Chrome*/??")
+    )
+  end
+
   if ENV['BENCH']
     def test_csv
       Benchmark.bmbm do |bmbm|

@@ -10,9 +10,9 @@ module Browscapper
       end
 
       pattern.downcase!
-      pattern.gsub!(/([\^\$\(\)\[\]\.\-])/, "\\\\\\1")
+      pattern.gsub!(/([\^\$\(\)\[\]\.\-\+])/, "\\\\\\1")
       pattern.gsub!('?', '.')
-      pattern.gsub!('*', '.*?')
+      pattern.gsub!(/\*+/, '.*?')
 
       Regexp.new("^#{pattern}$")
     end
