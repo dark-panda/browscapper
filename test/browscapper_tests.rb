@@ -44,12 +44,35 @@ class BrowscapperTest < MiniTest::Unit::TestCase
 
   FIREFOX_ON_OSX.pattern = /^mozilla\/5\.0 \(macintosh; .*; .*mac os x.*; .*; rv:1\.9\.2.*\) gecko\/.* firefox\/3\.6.*$/
 
+  FIREFOX_ON_OSX_USER_AGENT_STRING = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.8) Gecko/20100722 Firefox/3.6.8'.freeze
+
+  def setup
+    Browscapper.clear_cache
+  end
+
   def test_browscap_ini
-    Browscapper.load(File.join('vendor', 'browscap.ini'))
-    match = Browscapper.match('Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.8) Gecko/20100722 Firefox/3.6.8')
+    match = Browscapper.match(FIREFOX_ON_OSX_USER_AGENT_STRING)
 
     FIREFOX_ON_OSX.each do |k, v|
       assert(v == match[k], " Expected #{v.inspect} for #{k}, got #{match[k].inspect}")
     end
+  end
+
+  def test_match_nil
+    assert_nil(Browscapper.match(nil))
+  end
+
+  def test_match_empty
+    assert_nil(Browscapper.match(""))
+  end
+
+  def test_match_to_s
+    value = OpenStruct.new
+
+    def value.to_s
+      FIREFOX_ON_OSX_USER_AGENT_STRING
+    end
+
+    assert_equal(FIREFOX_ON_OSX, Browscapper.match(value))
   end
 end

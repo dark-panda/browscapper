@@ -23,4 +23,4 @@ if RUBY_VERSION >= '1.9'
   MiniTest::Reporters.use!(MiniTest::Reporters::SpecReporter.new)
 end
 
-
+Browscapper.load(File.join('vendor', 'browscap.ini'))
