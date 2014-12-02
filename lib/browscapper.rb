@@ -36,12 +36,6 @@ module Browscapper
       self
     end
 
-    def dump(format = :marshal)
-      @entries or Browscapper.load
-
-      Marshal.dump(@entries)
-    end
-
     def clear_cache
       MATCH_CACHE.clear
     end
