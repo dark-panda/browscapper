@@ -91,6 +91,8 @@ module Browscapper
     end
 
     def ==(other)
+      return false unless other.is_a?(self.class)
+
       ACCESSORS.each do |accessor|
         return false if self.send(accessor) != other.send(accessor)
       end
