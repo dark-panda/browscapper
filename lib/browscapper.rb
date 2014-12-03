@@ -58,7 +58,7 @@ module Browscapper
       ua_len = ua_str.length
 
       MATCH_CACHE[ua] ||= @entries.select { |k, v|
-        v[:pattern] =~ ua_str if v
+        v[:pattern] =~ ua_str if v && v[:pattern]
       }.sort_by { |(k, v)|
         ua_len - v[:user_agent].gsub(/[?*]/, '').length
       }.collect { |(k, v)|
