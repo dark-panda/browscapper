@@ -10,6 +10,15 @@ module Browscapper
   autoload :INIReader,  'browscapper/reader/ini_reader'
   autoload :MarshalReader,  'browscapper/reader/marshal_reader'
 
+  class Error < RuntimeError
+  end
+
+  class NotLoadedError < Error
+    def initialize
+      super("Browscap file not loaded")
+    end
+  end
+
   class << self
     attr_reader :entries, :file
     MATCH_CACHE = Hash.new
@@ -68,6 +77,38 @@ module Browscapper
       end
     end
     alias :query :match
+
+    def browscap_version
+      raise Browscapper::NotLoadedError.new if entries.nil?
+
+      if entries[:browscap_version] && entries[:browscap_version][:version]
+        entries[:browscap_version][:version]
+      end
+    end
+
+    def browscap_released
+      raise Browscapper::NotLoadedError.new if entries.nil?
+
+      if entries[:browscap_version] && entries[:browscap_version][:released]
+        Date.parse(entries[:browscap_version][:released])
+      end
+    end
+
+    def browscap_format
+      raise Browscapper::NotLoadedError.new if entries.nil?
+
+      if entries[:browscap_version] && entries[:browscap_version][:format]
+        entries[:browscap_version][:format]
+      end
+    end
+
+    def browscap_type
+      raise Browscapper::NotLoadedError.new if entries.nil?
+
+      if entries[:browscap_version] && entries[:browscap_version][:type]
+        entries[:browscap_version][:type]
+      end
+    end
 
     private
       def ua_empty?(ua)

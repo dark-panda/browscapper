@@ -75,4 +75,20 @@ class BrowscapperTest < MiniTest::Unit::TestCase
 
     assert_equal(FIREFOX_ON_OSX, Browscapper.match(value))
   end
+
+  def test_browscap_version
+    assert_equal(5036, Browscapper.browscap_version)
+  end
+
+  def test_browscap_released
+    assert_equal(Date.parse("Wed, 19 Nov 2014 21:12:38 +0000"), Browscapper.browscap_released)
+  end
+
+  def test_browscap_format
+    assert_equal("php", Browscapper.browscap_format)
+  end
+
+  def test_browscap_type
+    assert_equal("FULL", Browscapper.browscap_type)
+  end
 end

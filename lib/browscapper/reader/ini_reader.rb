@@ -9,6 +9,13 @@ module Browscapper
 
       def load(file)
         ini = IniFile.load(file, :encoding => 'BINARY')
+
+        entries = {
+          browscap_version: ini['GJK_Browscap_Version'].each_with_object({}) { |(k, v), memo|
+            memo[k.downcase.to_sym] = v
+          }
+        }
+
         ini.delete_section('GJK_Browscap_Version')
 
         injector = proc { |memo, section|
@@ -40,7 +47,7 @@ module Browscapper
           memo
         }
 
-        ini.sections.inject({}, &injector)
+        ini.sections.inject(entries, &injector)
       end
     end
   end
