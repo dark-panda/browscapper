@@ -22,6 +22,8 @@ Rake::TestTask.new(:test) do |t|
   t.warning = !!ENV['WARNINGS']
 end
 
+task default: :test
+
 desc 'Build docs'
 Rake::RDocTask.new do |t|
   t.title = "browscapper #{version}"
