@@ -1,4 +1,4 @@
-
+# frozen_string_literal: true
 # encoding: BINARY
 
 if RUBY_VERSION >= '1.9'

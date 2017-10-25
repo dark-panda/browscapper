@@ -1,4 +1,4 @@
-
+# frozen_string_literal: true
 # encoding: BINARY
 
 $: << File.dirname(__FILE__)
