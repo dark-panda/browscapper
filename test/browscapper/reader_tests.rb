@@ -5,7 +5,7 @@ $: << File.dirname(__FILE__)
 require 'test_helper'
 require 'benchmark'
 
-class Browscapper::ReaderTests < MiniTest::Unit::TestCase
+class Browscapper::ReaderTests < Minitest::Test
   include Browscapper::Reader
 
   def test_pattern_to_regexp

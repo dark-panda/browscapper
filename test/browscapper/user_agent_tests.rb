@@ -3,7 +3,7 @@
 $: << File.dirname(__FILE__)
 require 'test_helper'
 
-class Browscapper::UserAgentTest < MiniTest::Unit::TestCase
+class Browscapper::UserAgentTest < Minitest::Test
   def test_eqeq_equal
     a = Browscapper::UserAgent.new(tablet: :foo)
     b = Browscapper::UserAgent.new(tablet: :foo)

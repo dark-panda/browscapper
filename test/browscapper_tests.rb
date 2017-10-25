@@ -3,7 +3,7 @@
 $: << File.dirname(__FILE__)
 require 'test_helper'
 
-class BrowscapperTest < MiniTest::Unit::TestCase
+class BrowscapperTest < Minitest::Test
   FIREFOX_ON_OSX = Browscapper::UserAgent.new({
     :activex_controls => false,
     :alpha => false,
